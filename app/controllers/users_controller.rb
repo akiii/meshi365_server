@@ -1,9 +1,24 @@
 class UsersController < ApplicationController
 
   def login
-    puts "loginnnnnnn"
     puts params[:uiid]
-    render :json => { "status" => "ok" }
+    json = {}
+    user = User.find_by_uiid(params[:uiid])
+    if user
+      json["user_id"] = user.id
+    else
+      json = {}
+      user = User.new
+      user.uiid = params[:uiid]
+      if user.save
+        json["save"] = true
+      else
+        json["save"] = false
+      end
+      json["user_id"] = User.find_by_uiid(params[:uiid]).id
+    end
+    puts json
+    render :json => json
   end
 
 end
