@@ -61,4 +61,5 @@ Meshi365::Application.routes.draw do
   match 'post/food_picture' => 'food_pictures#post', :via => 'post'
 
   match 'api/:id/friends' => 'friends#index'
+  match 'api/:my_uiid/send_friend_request/:to_user_uiid' => 'friends#send_friend_request'
 end
