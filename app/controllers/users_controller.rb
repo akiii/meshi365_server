@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       end
       json["user_id"] = User.find_by_uiid(params[:uiid]).id
     end
-    puts json
+    json["uiid"] = user.uiid
     render :json => json
   end
 
