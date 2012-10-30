@@ -59,4 +59,6 @@ Meshi365::Application.routes.draw do
   match 'user/login' => 'users#login', :via => 'post'
   match 'food_pictures' => 'food_pictures#index'
   match 'post/food_picture' => 'food_pictures#post', :via => 'post'
+
+  match 'api/:id/friends' => 'friends#index'
 end
