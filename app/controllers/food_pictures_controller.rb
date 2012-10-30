@@ -1,8 +1,8 @@
 class FoodPicturesController < ApplicationController
 
   def index
-    pictures = FoodPicture.find(1)
-    render :json => pictures.image
+    pictures = FoodPicture.all
+    render :json => pictures
   end
 
   def post
