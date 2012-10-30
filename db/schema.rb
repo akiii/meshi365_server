@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121029052119) do
+ActiveRecord::Schema.define(:version => 20121030045923) do
+
+  create_table "food_pictures", :force => true do |t|
+    t.integer  "user_id"
+    t.text     "url"
+    t.text     "store_name"
+    t.text     "menu_name"
+    t.integer  "star_num"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "uiid"
