@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
-one:
-  my_id: 1
-  friend_id: 1
-
-two:
-  my_id: 1
-  friend_id: 1
