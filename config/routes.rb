@@ -56,10 +56,14 @@ Meshi365::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
-  match 'user/login' => 'users#login', :via => 'post'
   match 'food_pictures' => 'food_pictures#index'
-  match 'post/food_picture' => 'food_pictures#post', :via => 'post'
+  match 'api/post/food_picture' => 'food_pictures#post', :via => 'post'
 
-  match 'api/:uiid/friends' => 'friends#index'
-  match 'api/:my_uiid/send_friend_request/:to_user_uiid' => 'friends#send_friend_request'
+  match 'api/:uiid/show' => 'users#show'
+  match 'api/signup' => 'users#signup', :via => 'post'
+  match 'api/me' => 'users#me', :via => 'post'
+  match 'api/:uiid/friends' => 'users#friends'
+  match 'api/:uiid/requesting_users' => 'users#requesting_users', :via => 'post'
+  match 'api/send_friend_request' => 'users#send_friend_request', :via => 'post'
+#  match 'api/:my_uiid/send_friend_request/:to_user_uiid' => 'friends#send_friend_request'
 end
