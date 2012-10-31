@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :uiid
+  attr_accessible :name, :profile_image_url, :uiid
   validates :uiid, :uniqueness => true, :allow_nil => false
 
   # friend関係

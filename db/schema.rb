@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121031143136) do
+ActiveRecord::Schema.define(:version => 20121031220242) do
 
   create_table "food_pictures", :force => true do |t|
     t.integer  "user_id"
@@ -38,10 +38,11 @@ ActiveRecord::Schema.define(:version => 20121031143136) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "uiid"
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "uiid"
+    t.string   "profile_image_url"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
 end

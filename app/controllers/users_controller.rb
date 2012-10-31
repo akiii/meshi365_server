@@ -5,18 +5,17 @@ class UsersController < ApplicationController
   end
 
   def signup
-#    puts params[:profile_image_url]
     json = {}
     user = User.new
     user.name = params[:name]
     user.uiid = params[:uiid]
-#    user.profile_image_url = params[:profile_image_url]
+    user.profile_image_url = params[:profile_image_url]
     
     if user.save
       json["user_id"] = user.id
       json["user_name"] = user.name
       json["user_uiid"] = user.uiid
-#      json["user_profile_image_url"] = user.profile_image_url
+      json["user_profile_image_url"] = user.profile_image_url
       json["save"] = true
     else
       json["save"] = false

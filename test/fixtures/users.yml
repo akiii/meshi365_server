@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  uiid: MyString
   name: MyString
+  uiid: MyString
+  profile_image_url: MyString
 
 two:
-  uiid: MyString
   name: MyString
+  uiid: MyString
+  profile_image_url: MyString
