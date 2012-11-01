@@ -16,10 +16,10 @@ class FoodPicturesController < ApplicationController
     if params[:menu_name]
       picture.menu_name  = params[:menu_name]
     end
-#    if params[:comment]
-#      picture.comment    = params[:comment]
-#    end
-#    picture.star_num   = params[:star_num]
+    if params[:comment]
+      picture.comment    = params[:comment]
+    end
+    picture.star_num   = params[:star_num]
     if picture.save
       render :json => { "save" => true }
     else
