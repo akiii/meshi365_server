@@ -80,8 +80,10 @@ class UsersController < ApplicationController
   def search_friends
     current_user = User.find_by_uiid(params[:uiid])
     users = User.find(:all, :conditions => ['name like ?', params[:word] + '%'])
-    if users.include? current_user
-      users.delete current_user
+
+    users.delete current_user if users.include? current_user
+    users.delete_if do |u|
+      current_user.friends.include? u
     end
     render :json => users
   end
