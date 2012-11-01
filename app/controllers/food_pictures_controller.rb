@@ -16,6 +16,9 @@ class FoodPicturesController < ApplicationController
     if params[:menu_name]
       picture.menu_name  = params[:menu_name]
     end
+    if params[:amenity]
+      picture.amenity = params[:amenity]
+    end
     if params[:comment]
       picture.comment    = params[:comment]
     end
