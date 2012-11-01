@@ -6,7 +6,8 @@ class FoodPicturesController < ApplicationController
 
   def food_line
     user = User.find_by_uiid(params[:uiid])
-    render :json => FoodPicture.order.paginate(:page => params[:page], :conditions => { :user_id => user.friends.map(&:id) << user.id }, :include => :user, :per_page => 30)
+    food_pictures = FoodPicture.order.paginate(:page => params[:page], :conditions => { :user_id => user.friends.map(&:id) << user.id }, :include => :user, :per_page => 30)
+    render :json => food_pictures.to_json(:include => :user)
   end
 
   def post
