@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
   has_many :friend_requests, :dependent => :destroy
   has_many :requests, :class_name => 'FriendRequest', :foreign_key => :requested_user_id
   has_many :requesting_users, :through => :requests, :source => :user
+
+  has_many :food_pictures
 end
