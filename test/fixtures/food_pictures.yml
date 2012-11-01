@@ -2,14 +2,18 @@
 
 one:
   user_id: 1
-  url: MyText
-  store_name: MyText
-  menu_name: MyText
+  type: 1
+  url: MyString
+  store_name: MyString
+  menu_name: MyString
+  comment: MyText
   star_num: 1
 
 two:
   user_id: 1
-  url: MyText
-  store_name: MyText
-  menu_name: MyText
+  type: 1
+  url: MyString
+  store_name: MyString
+  menu_name: MyString
+  comment: MyText
   star_num: 1

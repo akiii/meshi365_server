@@ -11,13 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121031220242) do
+ActiveRecord::Schema.define(:version => 20121031232410) do
 
   create_table "food_pictures", :force => true do |t|
     t.integer  "user_id"
-    t.text     "url"
-    t.text     "store_name"
-    t.text     "menu_name"
+    t.integer  "type"
+    t.string   "url"
+    t.string   "store_name"
+    t.string   "menu_name"
+    t.text     "comment"
     t.integer  "star_num"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

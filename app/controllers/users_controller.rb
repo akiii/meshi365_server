@@ -60,7 +60,7 @@ class UsersController < ApplicationController
   end
 
   def send_friend_request
-    me = User.find_by_uiid(params[:my_uiid])
+    me = User.find_by_uiid(params[:from_user_uiid])
     requested_user = User.find_by_uiid(params[:to_user_uiid])
     if me != nil && requested_user != nil && params[:my_uiid] != params[:to_user_uiid]
       req = FriendRequest.find_by_user_id_and_requested_user_id(me.id, requested_user.id)
