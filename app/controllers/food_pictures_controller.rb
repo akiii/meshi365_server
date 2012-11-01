@@ -15,6 +15,11 @@ class FoodPicturesController < ApplicationController
     picture.comment    = params[:comment]
     picture.star_num   = params[:star_num]
     picture.save
+    if picture.save
+      render :json => { "save" => true }
+    else
+      render :json => { "save" => false }
+    end
   end
 
 end
