@@ -10,9 +10,15 @@ class FoodPicturesController < ApplicationController
     picture.user_id    = User.find_by_uiid(params[:uiid]).id
     picture.type       = params[:type]
     picture.url        = params[:url]
-    picture.store_name = params[:store_name]
-    picture.menu_name  = params[:menu_name]
-    picture.comment    = params[:comment]
+    if params[:store_name]
+      picture.store_name = params[:store_name]
+    end
+    if params[:menu_name]
+      picture.menu_name  = params[:menu_name]
+    end
+    if params[:comment]
+      picture.comment    = params[:comment]
+    end
     picture.star_num   = params[:star_num]
     picture.save
     if picture.save
