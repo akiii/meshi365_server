@@ -1,8 +1,12 @@
 class FoodPicturesController < ApplicationController
 
   def index
-    pictures = FoodPicture.all
-    render :json => pictures
+    render :json => FoodPicture.all
+  end
+
+  def food_line
+    user = User.find_by_uiid(params[:uiid])
+    render :json => FoodPicture.order.paginate(:page => params[:page], :conditions => { :user_id => user.friends.map(&:id) << user.id }, :include => :user, :per_page => 30)
   end
 
   def post
