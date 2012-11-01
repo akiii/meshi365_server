@@ -1,3 +1,3 @@
 class FoodPicture < ActiveRecord::Base
-  attr_accessible :comment, :menu_name, :star_num, :store_name, :type, :url, :user_id
+  attr_accessible :comment, :meal_type, :menu_name, :star_num, :store_name, :url, :user_id
 end

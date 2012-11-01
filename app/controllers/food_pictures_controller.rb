@@ -8,7 +8,7 @@ class FoodPicturesController < ApplicationController
   def post
     picture = FoodPicture.new
     picture.user_id    = User.find_by_uiid(params[:uiid]).id
-    picture.type       = params[:type]
+    picture.type       = params[:meal_type]
     picture.url        = params[:url]
     if params[:store_name]
       picture.store_name = params[:store_name]
