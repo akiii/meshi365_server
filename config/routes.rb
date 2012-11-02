@@ -56,7 +56,7 @@ Meshi365::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
   match 'api/:uiid/food_line' => 'food_pictures#food_line'
-  match 'food_pictures' => 'food_pictures#index'
+  match 'api/:uiid/calender' => 'food_pictures#calender', :via => 'post'
   match 'api/post/food_picture' => 'food_pictures#post', :via => 'post'
 
   match 'api/:uiid/show' => 'users#show'
