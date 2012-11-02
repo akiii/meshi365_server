@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  amenity: 1
+  max_parcentage: 1.5
+  min_parcentage: 1.5
+
+two:
+  amenity: 1
+  max_parcentage: 1.5
+  min_parcentage: 1.5
