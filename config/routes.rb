@@ -66,4 +66,6 @@ Meshi365::Application.routes.draw do
   match 'api/:uiid/requesting_users' => 'users#requesting_users'
   match 'api/send_friend_request' => 'users#send_friend_request', :via => 'post'
   match 'api/:uiid/friends/search' => 'users#search_friends', :via => 'post'
+
+  match 'cron/recommend_base_data/maintenance' => 'recommend#maintenance'
 end
