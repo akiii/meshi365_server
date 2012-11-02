@@ -10,6 +10,22 @@ class FoodPicturesController < ApplicationController
     render :json => food_pictures.to_json(:include => :user)
   end
 
+  def calender
+    current_user = User.find_by_uiid(params[:my_uiid])
+    user = User.find_by_uiid(params[:uiid])
+ 
+    since_date = Time.parse(params[:since_date])
+    to_date = Time.parse(params[:to_date])
+
+    food_pictures = []
+    if (current_user == user) || (current_user.friends.include? user)
+      uid = user.friends.map(&:id) << user.id
+      puts uid
+      food_pictures = FoodPicture.order.paginate(:page => params[:page], :conditions => [ "user_id = ? and created_at >= ? and created_at <= ?", user.id, since_date, to_date ], :include => :user, :per_page => 30)
+    end
+    render :json => food_pictures.to_json(:include => :user)
+  end
+
   def post
     picture = FoodPicture.new
     picture.user_id    = User.find_by_uiid(params[:uiid]).id
