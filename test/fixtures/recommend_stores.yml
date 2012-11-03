@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  group_id: 1
+  name: MyString
+  average_star_num: 1.5
+  url: MyString
+
+two:
+  group_id: 1
+  name: MyString
+  average_star_num: 1.5
+  url: MyString
