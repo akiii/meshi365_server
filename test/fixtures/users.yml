@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
   uiid: MyString
-  profile_image_url: MyString
+  name: MyString
+  profile_image_file_name: MyString
 
 two:
-  name: MyString
   uiid: MyString
-  profile_image_url: MyString
+  name: MyString
+  profile_image_file_name: MyString

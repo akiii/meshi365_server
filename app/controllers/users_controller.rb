@@ -9,13 +9,13 @@ class UsersController < ApplicationController
     user = User.new
     user.name = params[:name]
     user.uiid = params[:uiid]
-    user.profile_image_url = params[:profile_image_url]
+    user.profile_image_file_name = params[:profile_image_file_name]
     
     if user.save
       json["user_id"] = user.id
       json["user_name"] = user.name
       json["user_uiid"] = user.uiid
-      json["user_profile_image_url"] = user.profile_image_url
+      json["user_profile_image_file_name"] = user.profile_image_file_name
       json["save"] = true
     else
       json["save"] = false
