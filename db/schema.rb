@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121101155002) do
+ActiveRecord::Schema.define(:version => 20121103003519) do
 
   create_table "food_pictures", :force => true do |t|
     t.integer  "user_id"
@@ -38,6 +38,30 @@ ActiveRecord::Schema.define(:version => 20121101155002) do
     t.integer  "friend_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "group_relationships", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "groups", :force => true do |t|
+    t.integer  "amenity"
+    t.float    "max_parcentage"
+    t.float    "min_parcentage"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "recommend_stores", :force => true do |t|
+    t.integer  "group_id"
+    t.string   "name"
+    t.float    "average_star_num"
+    t.string   "url"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "users", :force => true do |t|
