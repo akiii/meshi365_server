@@ -62,7 +62,7 @@ class RecommendController < ApplicationController
 	    store.name = store_name
 	    store.all_star_num = 0
             store.highest_star_num = 0
-            store.url = ""
+            store.file_name = ""
             store.user_gone_count = 0
             stores_hash[store_name] = store
 	  end
@@ -71,7 +71,7 @@ class RecommendController < ApplicationController
 	  store.all_star_num += p.star_num
           if store.highest_star_num < p.star_num
             store.highest_star_num = p.star_num
-            store.url = p.url
+            store.file_name = p.file_name
           end
 	  store.user_gone_count += 1
 	  stores_hash[store_name] = store
@@ -85,7 +85,7 @@ class RecommendController < ApplicationController
 	recommend_store.group_id = g.id
         recommend_store.name = store.name
 	recommend_store.average_star_num = store.all_star_num / (store.user_gone_count * 1)
-	recommend_store.url = store.url
+	recommend_store.file_name = store.file_name
 	# save
 	recommend_store.save
       end
