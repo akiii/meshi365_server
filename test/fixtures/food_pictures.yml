@@ -2,20 +2,22 @@
 
 one:
   user_id: 1
+  file_name: MyString
   meal_type: 1
-  url: MyString
   store_name: MyString
   menu_name: MyString
-  amenity: 1
-  comment: MyString
   star_num: 1
+  comment: MyText
+  amenity: 1
+  created_at: 
 
 two:
   user_id: 1
+  file_name: MyString
   meal_type: 1
-  url: MyString
   store_name: MyString
   menu_name: MyString
-  amenity: 1
-  comment: MyString
   star_num: 1
+  comment: MyText
+  amenity: 1
+  created_at: 

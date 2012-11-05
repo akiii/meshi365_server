@@ -3,11 +3,11 @@
 one:
   group_id: 1
   name: MyString
-  average_star_num: 1.5
-  url: MyString
+  average_star_num: 1
+  file_name: MyString
 
 two:
   group_id: 1
   name: MyString
-  average_star_num: 1.5
-  url: MyString
+  average_star_num: 1
+  file_name: MyString
