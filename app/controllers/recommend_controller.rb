@@ -97,4 +97,24 @@ class RecommendController < ApplicationController
     create_store_ranking_all_groups
   end
 
+  def stores
+    user = User.find_by_uiid(params[:uiid])
+    relationship = GroupRelationship.find_by_user_id(user.id)
+    recommend_stores = []
+    if relationship
+      group = Group.find(relationship.group_id)
+
+      # groupのuserが行ったすべてのお店
+      recommend_stores = RecommendStore.find(:all, :conditions => { :group_id => group.id }, :order => "average_star_num desc")
+
+      # userが行ったお店の名前の配列
+      wentToStores = user.food_pictures.map(&:store_name)
+
+      recommend_stores.delete_if do |s|
+        wentToStores.include? s.name
+      end
+    end
+    render :json => recommend_stores
+  end
+
 end
