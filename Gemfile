@@ -6,12 +6,22 @@ gem 'rails', '3.2.8'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :production do
+  gem 'mysql2'
   gem 'pg'
   gem 'thin'
+
+  gem 'execjs'
+  gem 'therubyracer'
+
+  gem 'unicorn'
 end
 
 group :development, :test do
   gem 'sqlite3'
+
+  gem 'capistrano'
+  gem 'capistrano_colors'
+  gem 'capistrano-unicorn'
 end
 
 
