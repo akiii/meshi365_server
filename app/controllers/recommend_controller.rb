@@ -52,40 +52,58 @@ class RecommendController < ApplicationController
     groups.each do |g|
       # key に store_name, value に PreparationRecommendStore の インスタンスのハッシュを定義
       stores_hash = {}
-      store = PreparationRecommendStore.new
+      gstore = PreparationRecommendStore.new
       # groupの全userのfood picturesをクロール
       g.users.each do |u|
         u.food_pictures.each do |p|
 	  # クロール中に初めて出た店ならばインスタンス生成、ハッシュに追加
-          unless stores_hash.key? store_name
-            store = PreparationRecommendStore.new
-	    store.name = store_name
-	    store.all_star_num = 0
-            store.highest_star_num = 0
-            store.file_name = ""
-            store.user_gone_count = 0
-            stores_hash[store_name] = store
-	  end
-	  # ハッシュの PreparationRecommendStore のインスタンスの情報の更新
-          store = stores_hash[store_name]
-	  store.all_star_num += p.star_num
-          if store.highest_star_num < p.star_num
-            store.highest_star_num = p.star_num
-            store.file_name = p.file_name
+          if p.store_name != "(null)"
+            if !stores_hash.key? p.store_name
+              store_hash = {}
+              store_hash["name"] = p.store_name
+              store_hash["all_star_num"] = 0
+              store_hash["highest_star_num"] = 0
+              store_hash["file_name"] = ""
+              store_hash["user_gone_count"] = 0
+              stores_hash[store_hash["name"]] = store_hash
+	    end
           end
-	  store.user_gone_count += 1
-	  stores_hash[store_name] = store
+
+	  # ハッシュの PreparationRecommendStore のインスタンスの情報の更新
+	  store_hash = stores_hash[p.store_name]
+	  if store_hash != nil
+#	    puts store_hash
+#	    puts store_hash["all_star_num"] += p.star_num
+	    if store_hash["highest_star_num"] < p.star_num
+              store_hash["highest_star_num"] = p.star_num
+	      store_hash["file_name"] = p.file_name
+	    end
+	    store_hash["user_gone_count"] += 1
+            stores_hash[store_hash["name"]] = store_hash
+
+#	  store.all_star_num += p.star_num
+#          if store.highest_star_num < p.star_num
+#            store.highest_star_num = p.star_num
+#            store.file_name = p.file_name
+          end
+#	  store.user_gone_count += 1
+#	  stores_hash[p.store_name] = store
 	end
+        puts stores_hash
       end
 
       # groupの探索が終わったらハッシュに入っているstore情報をデータベースに保存する、あれば更新
-      stores_hash.each_value do |store|
-        recommend_store = RecommendStore.find_by_group_id_and_name(g.id, store.name)
+      stores_hash.each_key do |key|
+        hash = stores_hash[key]
+        recommend_store = RecommendStore.find_by_group_id_and_name(g.id, key)
 	recommend_store = RecommendStore.new if !recommend_store
 	recommend_store.group_id = g.id
-        recommend_store.name = store.name
-	recommend_store.average_star_num = store.all_star_num / (store.user_gone_count * 1)
-	recommend_store.file_name = store.file_name
+	recommend_store.name = key
+	recommend_store.average_star_num = hash["highest_star_num"] / (hash["highest_star_num"] * 1)
+	recommend_store.file_name = key
+#        recommend_store.name = store.name
+#	recommend_store.average_star_num = store.all_star_num / (store.user_gone_count * 1)
+#	recommend_store.file_name = store.file_name
 	# save
 	recommend_store.save
       end
@@ -93,7 +111,7 @@ class RecommendController < ApplicationController
   end
 
   def maintenance
-    decide_group_all_users
+#    decide_group_all_users
     create_store_ranking_all_groups
     render :json => true
   end
