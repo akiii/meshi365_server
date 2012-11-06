@@ -113,7 +113,7 @@ class RecommendController < ApplicationController
   def maintenance
     decide_group_all_users
     create_store_ranking_all_groups
-    render :json => true
+    render :json => GroupRelationship.all
   end
 
   def group_stores
