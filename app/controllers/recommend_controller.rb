@@ -89,7 +89,6 @@ class RecommendController < ApplicationController
 #	  store.user_gone_count += 1
 #	  stores_hash[p.store_name] = store
 	end
-        puts stores_hash
       end
 
       # groupの探索が終わったらハッシュに入っているstore情報をデータベースに保存する、あれば更新
