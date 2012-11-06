@@ -32,17 +32,17 @@ class RecommendController < ApplicationController
         amenity_groups.sort_by do |g1|
           g1.parcentage
         end
-
         # ジャンルが自炊(id == 0 のとき自炊)でなければuserが属するgroupを決定
-        if amenity_groups[0].id != 0
-          group = Group.find(:first, :conditions => ["amenity = ? and min_parcentage <= ? and max_parcentage >= ?", amenity_groups[0].id, amenity_groups[0].parcentage, amenity_groups[0].parcentage])
-          puts "group id : #{group.amenity} #{group.min_parcentage} <= #{amenity_groups[0].parcentage} <= #{group.max_parcentage}"
+	high_amenity_group = amenity_groups[amenity_groups.count-1]
+        if high_amenity_group.id != 0
+          group = Group.find(:first, :conditions => ["amenity = ? and min_parcentage <= ? and max_parcentage >= ?", high_amenity_group.id, high_amenity_group.parcentage, high_amenity_group.parcentage])
 	  relationship = GroupRelationship.find_by_user_id(u.id)
 	  relationship = GroupRelationship.new if !relationship
+	  relationship.user_id = u.id
 	  relationship.group_id = group.id
 	  # save
 	  relationship.save
-        end                                                            
+	end
       end
     end
   end
