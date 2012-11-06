@@ -44,6 +44,7 @@ class FoodPicturesController < ApplicationController
       picture.comment    = params[:comment]
     end
     picture.star_num   = params[:star_num]
+    picture.created_at = Time.parse(params[:created_at]) if params[:created_at]
     if picture.save
       render :json => { "save" => true }
     else
