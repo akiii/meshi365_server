@@ -14,7 +14,7 @@ class RecommendController < ApplicationController
         amenity_groups = []
      
         # userの投稿で店のジャンル(ファーストフード、レストランなど)ずつの個数を求める
-        for i in 0..AMENITY_COUNT-1
+        for i in 0..4-1
           amenity_counts << 0
           amenity_groups << AmenityGroup.create(:id => i, :parcentage => 0)
         end
@@ -23,7 +23,7 @@ class RecommendController < ApplicationController
         end
 
         # userが各店のジャンルにどれくらい行っているかを求める( % )
-        for i in 0..AMENITY_COUNT-1
+        for i in 0..4-1
           amenity_groups[i].parcentage = 100 * amenity_counts[i] / (u.food_pictures.count * 1.0)
         end
 
