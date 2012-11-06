@@ -97,7 +97,7 @@ class RecommendController < ApplicationController
     create_store_ranking_all_groups
   end
 
-  def stores
+  def group_stores
     user = User.find_by_uiid(params[:uiid])
     relationship = GroupRelationship.find_by_user_id(user.id)
     recommend_stores = []
