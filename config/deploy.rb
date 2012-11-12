@@ -65,4 +65,4 @@ role :db,  "ec2-54-242-232-66.compute-1.amazonaws.com", :primary => true # This 
 #   end
 # end
 
-#require 'capistrano-unicorn'
+require 'capistrano-unicorn'
