@@ -19,7 +19,11 @@ test:
   timeout: 5000
 
 production:
-  adapter: postgresql
-  database: meshi365_production
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: meshi356_production
   pool: 5
-  timeout: 5000
+  username: root
+  password:
+  socket: /var/lib/mysql/mysql.sock
