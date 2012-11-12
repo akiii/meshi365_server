@@ -13,6 +13,7 @@ group :production do
   gem 'execjs'
   gem 'therubyracer'
 
+  gem 'rvm-capistrano'
   gem 'unicorn'
 end
 
@@ -21,7 +22,6 @@ group :development, :test do
 
   gem 'capistrano'
   gem 'capistrano_colors'
-  gem 'rvm-capistrano'
   gem 'capistrano-unicorn'
 end
 
