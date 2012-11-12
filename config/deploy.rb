@@ -45,10 +45,12 @@ set :deploy_to, "/home/ec2-user/apps/#{application}"
 set :normalize_asset_timestamps, false
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
 
-role :web, "ec2-54-242-232-66.compute-1.amazonaws.com"                          # Your HTTP server, Apache/etc
-role :app, "ec2-54-242-232-66.compute-1.amazonaws.com"                          # This may be the same as your `Web` server
-role :db,  "ec2-54-242-232-66.compute-1.amazonaws.com", :primary => true # This is where Rails migrations will run
+task :staging do
+  role :web, "ec2-54-242-232-66.compute-1.amazonaws.com"                          # Your HTTP server, Apache/etc
+  role :app, "ec2-54-242-232-66.compute-1.amazonaws.com"                          # This may be the same as your `Web` server
+  role :db,  "ec2-54-242-232-66.compute-1.amazonaws.com", :primary => true # This is where Rails migrations will run
 # role :db,  "your slave db-server here"
+end
 
 # if you want to clean up old releases on each deploy uncomment this:
 # after "deploy:restart", "deploy:cleanup"
